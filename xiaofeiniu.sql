@@ -3,12 +3,15 @@ DROP DATABASE IF EXISTS xfn;
 CREATE DATABASE xfn CHARSET=UTF8;
 USE xfn;
 CREATE TABLE xfn_admin(
-    aid INT PRIMARY KEY,
+    aid INT PRIMARY KEY AUTO_INCREMENT,
     aname VARCHAR(32) UNIQUE,
     apwd VARCHAR(64)
 );
+INSERT INTO xfn_admin VALUES(NULL,'admin','123456');
+INSERT INTO xfn_admin VALUES(NULL,'boss','999999');
+
 CREATE TABLE xfn_settings(
-    sid INT PRIMARY KEY,
+    sid INT PRIMARY KEY AUTO_INCREMENT,
     appName VARCHAR(32),
     apiUrl VARCHAR(64),
     adminUrl VARCHAR(64),
@@ -17,25 +20,25 @@ CREATE TABLE xfn_settings(
     copyright VARCHAR(128)
 );
 CREATE TABLE xfn_table(
-    tid INT PRIMARY KEY,
+    tid INT PRIMARY KEY AUTO_INCREMENT,
     tname VARCHAR(64),
     type VARCHAR(16),
     status INT
 );
 CREATE TABLE xfn_reservation(
-    rid INT PRIMARY KEY,
+    rid INT PRIMARY KEY AUTO_INCREMENT,
     contactName VARCHAR(64),
     phone VARCHAR(16),
     contactTime BIGINT,
     dinnerTime BIGINT
 );
 CREATE TABLE xfn_category(
-    cid INT PRIMARY KEY,
+    cid INT PRIMARY KEY AUTO_INCREMENT,
     cname VARCHAR(32)
 );
 -- 菜品
 CREATE TABLE xfn_dish(
-    did INT PRIMARY KEY,
+    did INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(32),
     imgUrl VARCHAR(128),
     price DECIMAL(6,2),
@@ -45,7 +48,7 @@ CREATE TABLE xfn_dish(
 );
 -- 订单
 CREATE TABLE xfn_order(
-   oid INT PRIMARY KEY,
+   oid INT PRIMARY KEY AUTO_INCREMENT,
    startTime BIGINT,
    endTime BIGINT,
    customerCount INT,
@@ -54,7 +57,7 @@ CREATE TABLE xfn_order(
 );
 -- 订单详情
 CREATE TABLE xfn_order_detail(
-   did INT PRIMARY KEY,
+   did INT PRIMARY KEY AUTO_INCREMENT,
    dishld INT,
 --    键参考菜品.did
    dishCount INT,
